@@ -72,7 +72,8 @@ The system uses **DynamoDB** as a NoSQL database, with separate tables for **Use
 The UI is built using **React.js** and is hosted on **AWS Amplify**.
 
 ### 6.2 UI Navigation Flow
-> *[Insert Navigation Flow Diagram Here]*
+> ![2025-03-19_22h02_09](https://github.com/user-attachments/assets/b2348337-35ce-4432-86aa-65a9794e331a)
+
 
 ### 6.3 Use Cases / User Functions
 - ✅ Users can **search for movies** (Planned for final version).
