@@ -14,7 +14,9 @@ The AWS migration replaces the traditional backend setup (**Express.js & MongoDB
 - **DynamoDB** (Database for users & watchlists)
 - **Amazon Cognito** (User authentication)
 - **Amazon S3** (Static file storage)
-- **AWS Amplify** (Frontend hosting)
+- **AWS CloudWatch**
+- **AWS IAM**
+- **AWS Amplify** (Frontend hosting) : Attempted however never utilized, went a different route.
 
 ## Section 2 - Overview
 
@@ -27,16 +29,18 @@ The purpose of this migration is to modernize the My Movie Database backend by l
 ### 2.2 Scope
 #### ✅ Included in This Migration:
 - Migrating backend from **Express.js & MongoDB** → **AWS Lambda & DynamoDB**.
-- Hosting frontend using **AWS Amplify**.
+- Hosting frontend using **AWS Amplify**, This was the intention however ended up going static website through S3 bucket hosting the Index and Profile htmls along side lambda functions.
 - Storing static assets (e.g., user avatars) in **Amazon S3**.
 - Implementing **API Gateway** for client-server communication.
 - Using **Cognito** for authentication & authorization.
+- The use of IAM roles and permissions when needed.
+- Using **AWS Cloudwatch** to maintain and monitor metrics.
 
 #### ❌ Not Included in This Milestone (Planned for Final Project):
-- **TV Show Search**
+- **TV Show Search** (The search was specific to TMDB movie api).
 - **AI-Based Recommendations**
-- **Live Streaming**
-- **Movie Search will be included in the final project but is not part of this milestone.**
+- **Live Streaming** (along side trailers)
+
 
 ## Section 3 - System Architecture
 
@@ -76,14 +80,14 @@ The UI is built using **React.js** and is hosted on **AWS Amplify**.
 
 
 ### 6.3 Use Cases / User Functions
-- ✅ Users can **search for movies** (Planned for final version).
+- ✅ Users can **search for movies** 
 - ✅ Users can **add movies to their watchlist**.
 - ✅ Users can **view & manage their watchlist**.
 
 ---
 
-## 🚀 Next Steps
+## 🚀 Completed Steps from last project overview
 This serves as a **high-level overview** of the migration process. Future milestones will include:
-1. **Implementing API Gateway & Lambda for Search**
-2. **Adding Authentication with Cognito**  -- still reasearching this.
-3. **Deploying the Frontend via AWS Amplify**  -- still reasearching this as well.
+1. **Implementing API Gateway & Lambda for Search**    ✅  Successfully implimented 
+2. **Adding Authentication with Cognito**  -- ✅  Successfully implimented
+3. **Deploying the Frontend via AWS Amplify**  -- ✅  Successfully implimented However, pivoted towards using static website via s3 bucket, lambda functions.
