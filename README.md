@@ -16,7 +16,7 @@ The AWS migration replaces the traditional backend setup (**Express.js & MongoDB
 - **Amazon S3** (Static file storage)
 - **AWS CloudWatch**
 - **AWS IAM**
-- **AWS Amplify** (Frontend hosting) : Attempted however never utilized, went a different route.
+- ❌ **AWS Amplify** (Frontend hosting) : Attempted however never utilized, went a different route.
 
 ## Section 2 - Overview
 
@@ -36,7 +36,7 @@ The purpose of this migration is to modernize the My Movie Database backend by l
 - The use of IAM roles and permissions when needed.
 - Using **AWS Cloudwatch** to maintain and monitor metrics.
 
-#### ❌ Not Included in This Milestone (Planned for Final Project):
+#### ❌ Included in This Milestone (Planned for Future Enhancement):
 - **TV Show Search** (The search was specific to TMDB movie api).
 - **AI-Based Recommendations**
 - **Live Streaming** (along side trailers)
