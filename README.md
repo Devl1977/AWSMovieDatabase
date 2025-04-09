@@ -91,3 +91,9 @@ This serves as a **high-level overview** of the migration process. Future milest
 1. **Implementing API Gateway & Lambda for Search**    ✅  Successfully implimented 
 2. **Adding Authentication with Cognito**  -- ✅  Successfully implimented
 3. **Deploying the Frontend via AWS Amplify**  -- ✅  Successfully implimented However, pivoted towards using static website via s3 bucket, lambda functions.
+
+
+### Diagram Flow:
+
+![image](https://github.com/user-attachments/assets/cf828bb4-515f-4b02-936b-e68b60ebc5d1)
+
