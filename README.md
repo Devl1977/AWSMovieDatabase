@@ -1,9 +1,9 @@
-# 🎬 Samm’s Magic Movie Database (AWS Serverless Migration)
+# 🎬 Samm’s Movie Database (AWS Serverless Migration)
 
 ## 📌 Section 1 - Project Description
 
 ### 1.1 Project Name
-**Samm’s Magic Movies (AWS Migration Project)**
+**Samm’s Movies (AWS Migration Project)**
 
 ### 1.2 Description  
 This is a serverless movie discovery and watchlist management application, migrated from a traditional stack (**Express + MongoDB**) to **fully AWS-managed services**. The app allows users to **search for movies**, **manage their personal watchlists**, **upload profile pictures**, and **monitor activity with CloudWatch** — all while being scalable, efficient, and cost-effective.
