@@ -1,99 +1,124 @@
-# My Movie Database (AWS Migration)
+# 🎬 Samm’s Magic Movie Database (AWS Serverless Migration)
 
-## Section 1 - Project Description
+## 📌 Section 1 - Project Description
 
 ### 1.1 Project Name
-**My Movie Database (AWS Migration)**
+**Samm’s Magic Movies (AWS Migration Project)**
 
-### 1.2 Description
-My Movie Database is a web application that allows users to discover movies, manage their watchlist, and view details such as genres, ratings, and release dates. The application integrates with **The Movie Database (TMDB) API** to fetch movie data and is being migrated to **AWS** for improved scalability, performance, and availability.
-
-The AWS migration replaces the traditional backend setup (**Express.js & MongoDB**) with a **fully serverless architecture** using:
-- **AWS Lambda** (Backend functions)
-- **Amazon API Gateway** (Routing API requests)
-- **DynamoDB** (Database for users & watchlists)
-- **Amazon Cognito** (User authentication)
-- **Amazon S3** (Static file storage)
-- **AWS CloudWatch**
-- **AWS IAM**
-- ❌ **AWS Amplify** (Frontend hosting) : Attempted however never utilized, went a different route.
-
-## Section 2 - Overview
-
-### 2.1 Purpose
-The purpose of this migration is to modernize the My Movie Database backend by leveraging AWS services to provide **a scalable, reliable, and cost-effective** infrastructure. This transition will:
-- Improve **performance** and **availability**
-- Allow **seamless watchlist management**
-- Integrate **authentication via AWS Cognito**
-
-### 2.2 Scope
-#### ✅ Included in This Migration:
-- Migrating backend from **Express.js & MongoDB** → **AWS Lambda & DynamoDB**.
-- Hosting frontend using **AWS Amplify**, This was the intention however ended up going static website through S3 bucket hosting the Index and Profile htmls along side lambda functions.
-- Storing static assets (e.g., user avatars) in **Amazon S3**.
-- Implementing **API Gateway** for client-server communication.
-- Using **Cognito** for authentication & authorization.
-- The use of IAM roles and permissions when needed.
-- Using **AWS Cloudwatch** to maintain and monitor metrics.
-
-#### ❌ Included in This Milestone (Planned for Future Enhancement):
-- **TV Show Search** (The search was specific to TMDB movie api).
-- **AI-Based Recommendations**
-- **Live Streaming** (along side trailers)
-
-
-## Section 3 - System Architecture
-
-### 3.1 Overview
-The new system follows a **serverless AWS architecture**, where the **frontend communicates with API Gateway**, which then routes requests to AWS Lambda functions. These functions interact with DynamoDB for data storage, while user authentication is managed using Amazon Cognito.
-
-### 3.2 Architectural Diagram
-> *[Insert System Architecture Diagram Here]*
-
-## Section 4 - Data Dictionary
-
-### **Users Table**
-| Field          | Description                               | Type   |
-|---------------|-------------------------------------------|--------|
-| UserID        | Unique user identifier                    | String |
-| Name          | User's full name                          | String |
-| Email         | User's email address                      | String |
-| ProfilePicture | Link to profile picture stored in S3    | String |
-
-### **Watchlist Table**
-| Field         | Description                              | Type   |
-|--------------|------------------------------------------|--------|
-| WatchlistID  | Unique identifier for each watchlist entry | String |
-| UserID       | Foreign key linking to Users table       | String |
-| MovieID      | Identifier for the movie added to the watchlist | String |
-
-## Section 5 - Data Design
-The system uses **DynamoDB** as a NoSQL database, with separate tables for **Users** and **Watchlists**. Relationships are maintained via **UserID references**.
-
-## Section 6 - User Interface Design
-
-### 6.1 UI Overview
-The UI is built using **React.js** and is hosted on **AWS Amplify**.
-
-### 6.2 UI Navigation Flow
-> ![2025-03-19_22h02_09](https://github.com/user-attachments/assets/b2348337-35ce-4432-86aa-65a9794e331a)
-
-
-### 6.3 Use Cases / User Functions
-- ✅ Users can **search for movies** 
-- ✅ Users can **add movies to their watchlist**.
-- ✅ Users can **view & manage their watchlist**.
+### 1.2 Description  
+This is a serverless movie discovery and watchlist management application, migrated from a traditional stack (**Express + MongoDB**) to **fully AWS-managed services**. The app allows users to **search for movies**, **manage their personal watchlists**, **upload profile pictures**, and **monitor activity with CloudWatch** — all while being scalable, efficient, and cost-effective.
 
 ---
 
-## 🚀 Completed Steps from last project overview
-This serves as a **high-level overview** of the migration process. Future milestones will include:
-1. **Implementing API Gateway & Lambda for Search**    ✅  Successfully implimented 
-2. **Adding Authentication with Cognito**  -- ✅  Successfully implimented
-3. **Deploying the Frontend via AWS Amplify**  -- ✅  Successfully implimented However, pivoted towards using static website via s3 bucket, lambda functions.
+## ☁️ Section 2 - AWS Services Used
 
+| AWS Service        | Purpose                                                   |
+|--------------------|-----------------------------------------------------------|
+| **Lambda**         | Backend logic for searching movies, profile updates, etc. |
+| **API Gateway**    | Routing HTTP requests to Lambda functions                 |
+| **DynamoDB**       | NoSQL storage for Users and Watchlists                    |
+| **Amazon Cognito** | Authentication & Authorization (Login, Signup, Logout)    |
+| **S3**             | Static site hosting and storing profile images            |
+| **CloudWatch**     | Custom metrics and alarm notifications                    |
+| **SNS**            | Sends alerts from alarms to email                         |
+| **IAM**            | Secured permission boundaries for each service            |
 
-### Diagram Flow:
+---
 
-![image](https://github.com/user-attachments/assets/cf828bb4-515f-4b02-936b-e68b60ebc5d1)
+## 🎯 Section 3 - Key Features
 
+- ✅ **Movie Search via TMDB API**
+- ✅ **User Login & Signup via Cognito**
+- ✅ **Profile Management (Names, Picture Upload to S3)**
+- ✅ **Watchlist (Add/Delete Movies via DynamoDB)**
+- ✅ **CloudWatch Metrics**:
+  - `WatchlistActions` metric (Add/Remove)
+  - `ProfileUpdates` metric (Basic Info vs Picture Upload)
+- ✅ **CloudWatch Alarms**:
+  - Alert when profile is updated
+  - Alert when watchlist is modified
+- ✅ **SNS Notifications**:
+  - Email alerts triggered by alarm thresholds
+
+---
+
+## 🔧 Section 4 - Architecture Diagram
+
+> ![Diagram Placeholder](https://github.com/user-attachments/assets/cf828bb4-515f-4b02-936b-e68b60ebc5d1)
+
+---
+
+## 🗃️ Section 5 - DynamoDB Tables
+
+### Users Table
+
+| Field           | Type   | Description                        |
+|-----------------|--------|------------------------------------|
+| UserID          | String | Email used as the primary key     |
+| FirstName       | String | User’s first name                  |
+| LastName        | String | User’s last name                   |
+| ProfilePicture  | String | URL to the image stored in S3     |
+
+### Watchlists Table
+
+| Field         | Type   | Description                                |
+|---------------|--------|--------------------------------------------|
+| WatchlistID   | String | Unique ID for the watchlist item           |
+| UserID        | String | Email to identify which user added the movie |
+| MovieID       | String | ID from TMDB                               |
+| MovieTitle    | String | Title of the movie                         |
+| ReleaseDate   | String | Movie release date                         |
+| Overview      | String | Description of the movie                   |
+
+---
+
+## 🧪 Section 6 - Cloud Monitoring
+
+### 📊 CloudWatch Metrics:
+- `ProfileUpdates` (Tracks Basic Info edits and Picture uploads)
+- `WatchlistActions` (Tracks movie add/remove actions)
+
+### 🚨 CloudWatch Alarms:
+- Alarm if more than 5 watchlist actions happen in a minute
+- Alarm if more than 2 profile updates occur in a minute
+
+### 📩 SNS Integration:
+- Alerts emailed to instructor or admin for threshold breaches
+
+---
+
+## 🧑‍💻 Section 7 - DevOps Practices
+
+- All Lambda functions are **modular**, **scalable**, and use **environment-specific IAM roles**
+- Static frontend is hosted via **S3** with direct link routing
+- Cognito manages **session tokens** and **logout redirects**
+- Frontend includes:
+  - **Authentication state checks**
+  - **Auto-profile creation on signup**
+  - **Search without login**, but gated watchlist/profile actions
+
+---
+
+## 🧑‍🏫 Section 8 - For Instructors
+
+**To access the AWS environment:**
+- IAM User: `teacher-readonly`
+- Attached policy: `ReadOnlyAccess`
+- Please refer to AWS Management Console for Lambda, CloudWatch, Cognito, S3, and DynamoDB read-only insights
+
+---
+
+## 🧠 Bonus Features / UX Enhancements
+
+- 👤 Profile picture upload via S3
+- 🛑 Logged-out users cannot add to watchlist or view profile
+- 🎨 Tailored alerts:
+  - `⚠️ You are logged out` (red badge above search bar)
+  - `✅ Logged in as:` visible on login
+- 🎯 Clean logout URL hash handling
+
+---
+
+## ✅ Final Status
+
+This project is **fully deployed**, **monitored**, and meets the migration requirements from local dev to **AWS Serverless Production**.
